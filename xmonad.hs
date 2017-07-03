@@ -145,7 +145,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
                                        >> windows W.shiftMaster))
     ]
 
--- Window rules:
+-- Window rules
 myLayoutHook          =  avoidStruts
           $ minimize
           $ Tog.toggleLayouts (noBorders Full) 
@@ -209,13 +209,11 @@ myLogHook             = do
 -- Startup hook
 myStartupHook         =  return () <+> adjustEventInput <+> setWMName "XMonad"
 
--- nameScratchpad
+-- NameScratchpad
 mynameScratchpads     = [ NS "update" "urxvtc -name update -e yaourt -Syua" (appName  =? "update") (customFloating $ W.RationalRect 0.31 0.3 0.4 0.3)
                         , NS "MyHtop"       myHtop           (appName    =? "htop")         (customFloating $ W.RationalRect 0.05 0.1 0.9 0.8)
                         , NS "MyFM"         myFM             (appName    =? "ranger")       (customFloating $ W.RationalRect 0.15 0.2 0.7 0.6)
     ]
-
--- Scratchpad
 manageScratchPad      = scratchpadManageHook (W.RationalRect l t w h)
     where
     h                 = 0.333   -- terminal height
