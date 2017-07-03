@@ -101,9 +101,9 @@ Config {
         , Run Com              "XMTime"           []  ""            10
         ]
         -- layout
-   , sepChar  =  "%"   -- delineator between plugin names and straight text
-   , alignSep =  "}{"  -- separator between left-right alignment
-   , template =  " <fc=#3aa4db>|</fc> %XMonadLog% <fc=#3aa4db>|</fc> %coretemp% <fc=#3aa4db>|</fc><action=`XMFree` button=1> %memory% </action><fc=#3aa4db>|</fc><action=`XMVnstat` button=1> %XMTraf% </action><fc=#3aa4db>|</fc><action=`XMTop-cpu` button=1> %multicpu% %TCPU%</action><fc=#3aa4db>|</fc>}<action=`XMCal` button=1> %XMTime% </action>{<action=`XMYaourt` button=1>%Update%%XMUpdate%</action> <fc=#3aa4db>|</fc> <icon=cpu5.xbm/> %uname% <fc=#3aa4db>|</fc> <fc=#c0c0c0><icon=vol2.xbm/> %myVolume% </fc><fc=#3aa4db>|</fc> %wlp2s0wi% <fc=#3aa4db>|</fc> %battery% <fc=#3aa4db>|</fc> "
+   	, sepChar  =  "%"   -- delineator between plugin names and straight text
+   	, alignSep =  "}{"  -- separator between left-right alignment
+   	, template =  " <fc=#3aa4db>|</fc> %XMonadLog% <fc=#3aa4db>|</fc> %coretemp% <fc=#3aa4db>|</fc><action=`XMFree` button=1> %memory% </action><fc=#3aa4db>|</fc><action=`XMVnstat` button=1> %XMTraf% </action><fc=#3aa4db>|</fc><action=`XMTop-cpu` button=1> %multicpu% %TCPU%</action><fc=#3aa4db>|</fc>}<action=`XMCal` button=1> %XMTime% </action>{<action=`XMYaourt` button=1>%Update%%XMUpdate%</action> <fc=#3aa4db>|</fc> <icon=cpu5.xbm/> %uname% <fc=#3aa4db>|</fc> <fc=#c0c0c0><icon=vol2.xbm/> %myVolume% </fc><fc=#3aa4db>|</fc> %wlp2s0wi% <fc=#3aa4db>|</fc> %battery% <fc=#3aa4db>|</fc> "
       
-   }
+   	}
 
