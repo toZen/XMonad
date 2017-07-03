@@ -56,8 +56,8 @@ import XMonad.Layout.PerWorkspace
 import qualified XMonad.Layout.ToggleLayouts as Tog
 
 -- Options
-myFM                 =  "urxvtc -name ranger -e ranger"
-myHtop               =  "urxvtc -name htop -e htop"
+myFM                  =  "urxvtc -name ranger -e ranger"
+myHtop                =  "urxvtc -name htop -e htop"
 myTerminal            = "urxvtc"
 terminalClass         = "URxvt"
 myShell               = "bash"
@@ -75,7 +75,7 @@ encodeCChar           = map fromIntegral . B.unpack
 scratchPad            = scratchpadSpawnActionTerminal "urxvtc -name scratchpad"
 
 -- MyKeyBindings
-myKeys conf@(XConfig     {XMonad.modMask = modm})    =    M.fromList $
+myKeys conf@(XConfig    {XMonad.modMask = modm})    =    M.fromList $
     [ 
       ((mod1Mask,                         0xff61 ), spawn         "scrot  -s -e 'mv $f ~/Pictures/Screenshots/ 2>/dev/null'") --PrtSc+Alt
     , ((0,                                0xffc9 ), scratchPad                                                              ) --F12
