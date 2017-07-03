@@ -55,7 +55,9 @@ import XMonad.Layout.WindowNavigation
 import XMonad.Layout.PerWorkspace
 import qualified XMonad.Layout.ToggleLayouts as Tog
 
--- Constants
+-- Options
+myFM                 =  "urxvtc -name ranger -e ranger"
+myHtop               =  "urxvtc -name htop -e htop"
 myTerminal            = "urxvtc"
 terminalClass         = "URxvt"
 myShell               = "bash"
@@ -75,62 +77,63 @@ scratchPad            = scratchpadSpawnActionTerminal "urxvtc -name scratchpad"
 -- MyKeyBindings
 myKeys conf@(XConfig     {XMonad.modMask = modm})    =    M.fromList $
     [ 
-      ((mod1Mask,                         0xff61 ),        spawn         "scrot  -s -e 'mv $f ~/Pictures/Screenshots/ 2>/dev/null'")
-    , ((0,                                0xffc9 ),                       scratchPad )         --F12
-    , ((0,                                0xff61 ),        spawn         "scrot  -e 'mv $f ~/Pictures/Screenshots/ 2>/dev/null'"   )
-    , ((0,                            0x1008ff13 ),        spawn         "amixer -q set Master        2dB+")
-    , ((0,                            0x1008ff11 ),        spawn         "amixer -q set Master        2dB-")
-    , ((0,                            0x1008ff12 ),        spawn         "amixer -q set Master  toggleMute")
-    , ((modm         .|. controlMask,       xK_x ),        runOrRaisePrompt                             def)
-    , ((modm,                               xK_F1),        manPrompt                                    def)
-    , ((modm,                               xK_z ),        spawn         "sdmenu"                          )
-    , ((modm,                               xK_a ),        spawn         "urxvtc -name  ncmpcpp -e ncmpcpp")
-    , ((modm         .|. shiftMask,         xK_b ),        spawn         "subl3                ~/.xmobarrc")
-    , ((modm         .|. shiftMask,         xK_e ),        spawn         "eject                   /dev/sr0")
-    , ((modm,                               xK_e ),        spawn         "thunderbird"        )
-    , ((modm,                               xK_f ),        spawn         "pcmanfm"            )
-    , ((modm,                               xK_p ),        spawn         "dmenu_run"          )
-    , ((modm         .|. shiftMask,         xK_p ),        spawn         "gmrun"              )
-    , ((modm,                               xK_q ),        spawn         "xmonad --recompile && xmonad --restart && killall xmobar && xmobar")
-    , ((modm,                               xK_r ),        spawn         "urxvtc -name ranger -e ranger")
-    , ((modm,                               xK_s ),        spawn         "subl3"                        )
-    , ((modm,                               xK_v ),        spawn         "firefox"                      )
-    , ((modm,                               xK_w ),        spawn         "vivaldi-snapshot"             )
-    , ((modm         .|. shiftMask,         xK_x ),        spawn         "subl3 ~/.xmonad/xmonad.hs"    )
-    , ((modm         .|. shiftMask,         xK_v ),        spawn         "mynotes"   )
-    , ((modm         .|. shiftMask,         xK_z ),        spawn         "XMYaourt"  )
-    , ((modm,                               xK_y ),        withFocused minimizeWindow)
-    , ((modm         .|. shiftMask,         xK_y ),        sendMessage RestoreNextMinimizedWin)
+      ((mod1Mask,                         0xff61 ), spawn         "scrot  -s -e 'mv $f ~/Pictures/Screenshots/ 2>/dev/null'") --PrtSc+Alt
+    , ((0,                                0xffc9 ), scratchPad                                                              ) --F12
+    , ((0,                                0xff61 ), spawn         "scrot  -e 'mv $f ~/Pictures/Screenshots/ 2>/dev/null'"   ) --PrtSc
+    , ((0,                                0xffbe ), namedScratchpadAction mynameScratchpads   "MyFM") --F1
+    , ((0,                                0xffbf ), namedScratchpadAction mynameScratchpads "MyHtop") --F2
+    , ((0,                            0x1008ff13 ), spawn         "amixer -q set Master        2dB+") --Fn+F12
+    , ((0,                            0x1008ff11 ), spawn         "amixer -q set Master        2dB-") --Fn+F11
+    , ((0,                            0x1008ff12 ), spawn         "amixer -q set Master  toggleMute") --Fn+F10
+    , ((modm,                               xK_a ), spawn         "urxvtc -name  ncmpcpp -e ncmpcpp") --Win+A
+    , ((modm         .|. shiftMask,         xK_b ), spawn         "bleachbit"                       ) --Shift+Win+B
+    , ((modm,                               xK_d ), spawn         "sdmenu"                          ) --Win+D
+    , ((modm,                               xK_e ), spawn         "thunderbird"                     ) --Win+E
+    , ((modm,                               xK_f ), spawn         "pcmanfm"                         ) --Win+F
+    , ((modm,                               xK_g ), spawn         "gksu gparted"                    ) --Win+G
+    , ((modm,                               xK_l ), spawn         "lxappearance"                    ) --Win+L
+    , ((modm,                               xK_p ), spawn         "dmenu_run"                       ) --Win+P
+    , ((modm         .|. shiftMask,         xK_g ), spawn         "gmrun"                           ) --Shift+Win+G
+    , ((modm,                               xK_q ), spawn         "xmonad --recompile && xmonad --restart && killall xmobar && xmobar") --Win+Q
+    , ((modm,                               xK_s ), spawn         "subl3"                           ) --Win+S
+    , ((modm,                               xK_w ), spawn         "vivaldi-snapshot"                ) --Win+W
+    , ((modm         .|. shiftMask,         xK_x ), spawn         "oblogout"                        ) --Shift+Win+X
+    , ((modm,                               xK_x ), spawn         "subl3 ~/.xmonad/xmonad.hs"       ) --Win+X
+    , ((modm         .|. shiftMask,         xK_z ), spawn         "XMYaourt"                        ) --Shift+Win+Z
+    , ((modm,                               xK_c ), manPrompt                                    def)
+    , ((modm         .|. controlMask,       xK_x ), runOrRaisePrompt                             def)
+    , ((modm,                               xK_m ), withFocused minimizeWindow                      )
+    , ((modm,                               xK_n ), sendMessage RestoreNextMinimizedWin             )
 
 -- Default KeyBindings 
-    , ((modm         .|. shiftMask,         xK_c ),                      kill        )
-    , ((modm,                               xK_d ),        sendMessage   Expand      )
-    , ((modm,                               xK_g ),        sendMessage   Shrink      )
-    , ((modm,                               xK_j ),        windows       W.focusDown )
-    , ((modm         .|. shiftMask,         xK_j ),        windows       W.swapDown  )
-    , ((modm,                               xK_k ),        windows       W.focusUp   )
-    , ((modm         .|. shiftMask,         xK_k ),        windows       W.swapUp    )
-    , ((modm,                               xK_m ),        windows       W.focusMaster)
-    , ((modm,                               xK_n ),                      refresh)
-    , ((modm         .|. shiftMask,         xK_q ),        io            (exitWith ExitSuccess))
-    , ((modm         .|. shiftMask,         xK_t ),        withFocused   $ windows . W.sink    )
-    , ((modm,                               xK_t ),        spawn         $ XMonad.terminal conf)
-    , ((modm,                             xK_Tab ),        windows       W.focusDown           )
-    , ((modm,                           xK_space ),        sendMessage   NextLayout            )
-    , ((modm         .|. shiftMask,     xK_space ),        setLayout     $ XMonad.layoutHook conf)
-    , ((modm,                           xK_comma ),        sendMessage   (IncMasterN 1)   )
-    , ((modm,                          xK_Return ),        windows       W.swapMaster     )
-    , ((modm,                          xK_period ),        sendMessage   (IncMasterN (-1)))
+    , ((modm         .|. shiftMask,         xK_c ), kill                                            )
+--  , ((modm,                               xK_d ), sendMessage   Expand                            )
+--  , ((modm,                               xK_g ), sendMessage   Shrink                            )
+    , ((modm,                               xK_j ), windows       W.focusDown                       )
+    , ((modm         .|. shiftMask,         xK_j ), windows       W.swapDown                        )
+    , ((modm,                               xK_k ), windows       W.focusUp                         )
+    , ((modm         .|. shiftMask,         xK_k ), windows       W.swapUp                          )
+    , ((modm         .|. shiftMask,         xK_m ), windows       W.focusMaster                     )
+    , ((modm         .|. shiftMask,         xK_n ), refresh                                         )
+    , ((modm         .|. shiftMask,         xK_q ), io            (exitWith ExitSuccess)            )
+    , ((modm         .|. shiftMask,         xK_t ), withFocused   $ windows . W.sink                )
+    , ((modm,                               xK_t ), spawn         $ XMonad.terminal conf            )
+    , ((modm,                             xK_Tab ), windows       W.focusDown                       )
+    , ((modm,                           xK_space ), sendMessage   NextLayout                        )
+    , ((modm         .|. shiftMask,     xK_space ), setLayout     $ XMonad.layoutHook conf          )
+    , ((modm,                           xK_comma ), sendMessage   (IncMasterN 1)                    )
+    , ((modm,                          xK_Return ), windows       W.swapMaster                      )
+    , ((modm,                          xK_period ), sendMessage   (IncMasterN (-1))                 )
     ]
 
     ++
-    [ ((m            .|.                 modm, k ),        windows       $ f i)
-    | (i, k) <- zip (XMonad.workspaces      conf )         [xK_1 .. xK_9]
+    [ ((m            .|.                 modm, k ), windows       $ f i                             )
+    | (i, k) <- zip (XMonad.workspaces      conf )  [xK_1 .. xK_9]
     , (f, m) <- [(W.greedyView,                0 )
-    , (W.shift,                        shiftMask )         ]] 
+    , (W.shift,                        shiftMask )  ]] 
     ++
-    [((m             .|.               modm, key ),        screenWorkspace sc >>= flip whenJust (windows . f))
-    | (key, sc) <- zip [xK_u, xK_o, xK_i]   [0..]
+    [((m             .|.               modm, key ), screenWorkspace sc >>= flip whenJust (windows . f))
+    | (key, sc) <- zip [xK_u, xK_i]          [0..]
     , (f, m) <- [(W.view,                      0 ), 
       (W.shift,                      shiftMask)]]
 
@@ -181,13 +184,13 @@ myManageHook          =  composeAll . concat $
     where
     myW               = ["Vivaldi-snapshot", "Firefox"]
     myM               = ["Thunderbird"]
-    myF               = ["Pcmanfm", "ranger"]
+    myF               = ["Pcmanfm"]
     myT               = ["URxvt"]
     myC               = ["Subl3", "vim"]
 
 -- CenterFloat
     myFloatC          = ["Xmessage","feh"]
-    myFloatA          = ["Update"]
+    myFloatA          = ["Update","oblogout"]
     myFloatT          = ["Software Update"]
     myFloatR          = ["task_dialog","messages","pop-up","^conversation$","About"]
 
@@ -208,6 +211,8 @@ myStartupHook         =  return () <+> adjustEventInput <+> setWMName "XMonad"
 
 -- nameScratchpad
 mynameScratchpads     = [ NS "update" "urxvtc -name update -e yaourt -Syua" (appName  =? "update") (customFloating $ W.RationalRect 0.31 0.3 0.4 0.3)
+                        , NS "MyHtop"       myHtop           (appName    =? "htop")         (customFloating $ W.RationalRect 0.05 0.1 0.9 0.8)
+                        , NS "MyFM"         myFM             (appName    =? "ranger")       (customFloating $ W.RationalRect 0.15 0.2 0.7 0.6)
     ]
 
 -- Scratchpad
