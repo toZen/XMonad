@@ -101,7 +101,7 @@ Config {
         -- kernel monitor
         , Run Com              "uname"            ["-s","-r"]   ""  36000
 
-	      -- updates monitor
+	-- updates monitor
         , Run Com              "XMUpdate"         []  ""            3600
         
         -- time and date popuo launcher 
