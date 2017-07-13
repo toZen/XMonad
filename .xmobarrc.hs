@@ -1,7 +1,13 @@
 Config { 
         -- appearance
                                  font             =   "xft:TerminusRe33:size=10:normal:antialias=true"
-                               , additionalFonts  =  ["xft:TerminusRe33:size=10:antialise=true:hinting=true"]
+                               , additionalFonts  =   [
+                                                        "xft:Terminus Re33:size=10:antialise=true:hinting=true"
+                                                       ,"xft:Terminus Re33:pixelsize=4"
+                                                       ,"xft:FontAwesome:pixelsize=12"
+                                                       ,"xft:Weather Icons:weight=bold:pixelsize=14"
+                                                       ,"xft:Terminus Re33:size=8"
+                                                      ]
                                , iconRoot         =   "/home/tozen/.xmonad/.icons"
                                , bgColor          =   "#1c1c1c"
                                , fgColor          =   "#c0c0c0"
@@ -57,24 +63,25 @@ Config {
         -- battery monitor
         , Run BatteryP         ["BAT0"]
                                [ "-t"             ,   "<acstatus> <left>%"
-	     	`	       , "-L"             ,   "10"
-		 	       , "-H"             ,   "60"
-		 	       , "-l"             ,   "#ff0000"
-			       , "-h"             ,   "#c0c0c0"
-		 	       , "--"
-			       , "-O"             ,   "<icon=ac10.xbm/>"
-	                       , "-H"             ,   "-20"
-			       , "-i"             ,   "<icon=ac10.xbm/>"
-		               , "-o"             ,   "<icon=batt10.xbm/>" 
-		 	       ] 10
+		 				                   , "-L"             ,   "10"
+		 				                   , "-H"             ,   "60"
+		 				                   , "-l"             ,   "#ff0000"
+							                 , "-h"             ,   "#c0c0c0"
+		 				                   , "--"
+							                 , "-O"             ,   "<icon=ac10.xbm/>"
+							                 , "-H"             ,   "-20"
+							                 , "-i"             ,   "<icon=ac10.xbm/>"
+		 				                   , "-o"             ,   "<icon=batt10.xbm/>" 
+		 				                   ] 10
         
+
         -- wireless monitor
-	, Run Wireless         "wlp2s0" 
-		               [ "-a"             ,   "l"
-			       , "-w"             ,   "4"
- 			       , "-t"             ,   "<icon=wifi_01.xbm/><quality>%"
+	      , Run Wireless         "wlp2s0" 
+		                           [ "-a"             ,   "l"
+						                   , "-w"             ,   "4"
+						                   , "-t"             ,   "<icon=wifi_01.xbm/><quality>%"
                                , "-h"             ,   "#c0c0c0"
-			       ] 10
+						                   ] 10
         
         -- log monitor
         , Run XMonadLog
@@ -101,9 +108,9 @@ Config {
         , Run Com              "XMTime"           []  ""            10
         ]
         -- layout
-   	, sepChar  =  "%"   -- delineator between plugin names and straight text
-   	, alignSep =  "}{"  -- separator between left-right alignment
-   	, template =  " <fc=#3aa4db>|</fc> %XMonadLog% <fc=#3aa4db>|</fc> %coretemp% <fc=#3aa4db>|</fc><action=`XMFree` button=1> %memory% </action><fc=#3aa4db>|</fc><action=`XMVnstat` button=1> %XMTraf% </action><fc=#3aa4db>|</fc><action=`XMTop-cpu` button=1> %multicpu% %TCPU%</action><fc=#3aa4db>|</fc>}<action=`XMCal` button=1> %XMTime% </action>{<action=`XMYaourt` button=1>%Update%%XMUpdate%</action> <fc=#3aa4db>|</fc> <icon=cpu5.xbm/> %uname% <fc=#3aa4db>|</fc> <fc=#c0c0c0><icon=vol2.xbm/> %myVolume% </fc><fc=#3aa4db>|</fc> %wlp2s0wi% <fc=#3aa4db>|</fc> %battery% <fc=#3aa4db>|</fc> "
+   , sepChar  =  "%"   -- delineator between plugin names and straight text
+   , alignSep =  "}{"  -- separator between left-right alignment
+   , template =  " <fc=#3aa4db>|</fc> %XMonadLog% <fc=#3aa4db>|</fc> %coretemp% <fc=#3aa4db>|</fc><action=`XMFree` button=1> %memory% </action><fc=#3aa4db>|</fc><action=`XMVnstat` button=1> %XMTraf% </action><fc=#3aa4db>|</fc><action=`XMTop-cpu` button=1> %multicpu% %TCPU%</action><fc=#3aa4db>|</fc>}<fc=#3aa4db>|</fc><action=`XMCal` button=1> %XMTime% </action><fc=#3aa4db>|</fc> {<action=`XMYaourt` button=1>%Update%%XMUpdate%</action> <fc=#3aa4db>|</fc> <icon=cpu5.xbm/> %uname% <fc=#3aa4db>|</fc> <fc=#c0c0c0><icon=vol2.xbm/> %myVolume% </fc><fc=#3aa4db>|</fc> <action=`XMncmpcpp` button=3><action=`mpc prev` button=1><fn=3></fn></action> <action=`mpc toggle` button=1>%XMMPD%</action> <action=`mpc next` button=1><fn=3></fn></action></action> <fc=#3aa4db>|</fc> %wlp2s0wi% <fc=#3aa4db>|</fc> %battery% <fc=#3aa4db>|</fc> "
       
-   	}
+   }
 
