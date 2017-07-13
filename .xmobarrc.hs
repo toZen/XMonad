@@ -50,66 +50,66 @@ Config {
                              , "--high"         ,   "fd0537"
                              ] 50
                           
-        -- memory usage monitor
-        , Run Memory           [ "--template"     ,   "<icon=mem1.xbm/><fc=#d2d4dc> </fc><usedratio>%"
-                               , "--Low"          ,   "20"        
-                               , "--High"         ,   "90"        
-                               , "--low"          ,   "#d2d4dc"
-                               , "--normal"       ,   "#d2d4dc"
-                               , "--high"         ,   "#fd0537"
-                               ] 10
+      -- memory usage monitor
+      , Run Memory           [ "--template"     ,   "<icon=mem1.xbm/><fc=#d2d4dc> </fc><usedratio>%"
+                             , "--Low"          ,   "20"        
+                             , "--High"         ,   "90"        
+                             , "--low"          ,   "#d2d4dc"
+                             , "--normal"       ,   "#d2d4dc"
+                             , "--high"         ,   "#fd0537"
+                             ] 10
         
-        -- battery monitor
-        , Run BatteryP         ["BAT0"]
-                               [ "-t"             ,   "<acstatus> <left>%"
-		 	       , "-L"             ,   "10"
-		 	       , "-H"             ,   "60"
-		 	       , "-l"             ,   "#ff0000"
-		               , "-h"             ,   "#c0c0c0"
-		 	       , "--"
-		               , "-O"             ,   "<icon=ac10.xbm/>"
-			       , "-H"             ,   "-20"
-			       , "-i"             ,   "<icon=ac10.xbm/>"
-		 	       , "-o"             ,   "<icon=batt10.xbm/>" 
-		 	       ] 10
+      -- battery monitor
+      , Run BatteryP         ["BAT0"]
+                             [ "-t"             ,   "<acstatus> <left>%"
+		 	     , "-L"             ,   "10"
+		 	     , "-H"             ,   "60"
+		 	     , "-l"             ,   "#ff0000"
+		             , "-h"             ,   "#c0c0c0"
+		 	     , "--"
+		             , "-O"             ,   "<icon=ac10.xbm/>"
+			     , "-H"             ,   "-20"
+			     , "-i"             ,   "<icon=ac10.xbm/>"
+		 	     , "-o"             ,   "<icon=batt10.xbm/>" 
+		 	     ] 10
         
 
-        -- wireless monitor
-	      , Run Wireless   "wlp2s0" 
-		               [ "-a"             ,   "l"
-	           	       , "-w"             ,   "4"
-			       , "-t"             ,   "<icon=wifi_01.xbm/><quality>%"
-                               , "-h"             ,   "#c0c0c0"
-			       ] 10
+      -- wireless monitor
+      , Run Wireless           "wlp2s0" 
+		             [ "-a"             ,   "l"
+	           	     , "-w"             ,   "4"
+			     , "-t"             ,   "<icon=wifi_01.xbm/><quality>%"
+                             , "-h"             ,   "#c0c0c0"
+			     ] 10
         
-        -- log monitor
-        , Run XMonadLog
+      -- log monitor
+      , Run XMonadLog
 
-        -- pipereader launcher
-        , Run PipeReader       "/tmp/pipe"            "Update"        
+      -- pipereader launcher
+      , Run PipeReader       "/tmp/pipe"            "Update"        
 
-        -- cpu usage popup launcher
-        , Run Com              "TCPU"             []  ""            10
+      -- cpu usage popup launcher
+      , Run Com              "TCPU"             []  ""            10
 
-        -- traffic usage popup launcher
-        , Run Com              "XMTraf"           []  ""            50
+      -- traffic usage popup launcher
+      , Run Com              "XMTraf"           []  ""            50
 		    
-        -- volume launcher
-        , Run Com              "XMVol"            []  "myVolume"    10
+      -- volume launcher
+      , Run Com              "XMVol"            []  "myVolume"    10
 
-        -- kernel monitor
-        , Run Com              "uname"            ["-s","-r"]   ""  36000
-
-	-- updates monitor
-        , Run Com              "XMUpdate"         []  ""            3600
-        
-        -- time and date popuo launcher 
-        , Run Com              "XMTime"           []  ""            10
+      -- kernel monitor
+      , Run Com              "uname"            ["-s","-r"]   ""  36000
+      
+      -- updates monitor
+      , Run Com              "XMUpdate"         []  ""            3600
+      
+      -- time and date popuo launcher 
+      , Run Com              "XMTime"           []  ""            10
         ]
-        -- layout
-        , sepChar  =  "%"
-        , alignSep =  "}{"
-        , template =  " <fc=#3aa4db>|</fc> %XMonadLog% <fc=#3aa4db>|</fc> %coretemp% <fc=#3aa4db>|</fc><action=`XMFree` button=1> %memory% </action><fc=#3aa4db>|</fc><action=`XMVnstat` button=1> %XMTraf% </action><fc=#3aa4db>|</fc><action=`XMTop-cpu` button=1> %multicpu% %TCPU%</action><fc=#3aa4db>|</fc>}<fc=#3aa4db>|</fc><action=`XMCal` button=1> %XMTime% </action><fc=#3aa4db>|</fc> {<action=`XMYaourt` button=1>%Update%%XMUpdate%</action> <fc=#3aa4db>|</fc> <icon=cpu5.xbm/> %uname% <fc=#3aa4db>|</fc> <fc=#c0c0c0><icon=vol2.xbm/> %myVolume% </fc><fc=#3aa4db>|</fc> <action=`XMncmpcpp` button=3><action=`mpc prev` button=1><fn=3></fn></action> <action=`mpc toggle` button=1>%XMMPD%</action> <action=`mpc next` button=1><fn=3></fn></action></action> <fc=#3aa4db>|</fc> %wlp2s0wi% <fc=#3aa4db>|</fc> %battery% <fc=#3aa4db>|</fc> "
+      -- layout
+      , sepChar  =  "%"
+      , alignSep =  "}{"
+      , template =  " <fc=#3aa4db>|</fc> %XMonadLog% <fc=#3aa4db>|</fc> %coretemp% <fc=#3aa4db>|</fc><action=`XMFree` button=1> %memory% </action><fc=#3aa4db>|</fc><action=`XMVnstat` button=1> %XMTraf% </action><fc=#3aa4db>|</fc><action=`XMTop-cpu` button=1> %multicpu% %TCPU%</action><fc=#3aa4db>|</fc>}<fc=#3aa4db>|</fc><action=`XMCal` button=1> %XMTime% </action><fc=#3aa4db>|</fc> {<action=`XMYaourt` button=1>%Update%%XMUpdate%</action> <fc=#3aa4db>|</fc> <icon=cpu5.xbm/> %uname% <fc=#3aa4db>|</fc> <fc=#c0c0c0><icon=vol2.xbm/> %myVolume% </fc><fc=#3aa4db>|</fc> <action=`XMncmpcpp` button=3><action=`mpc prev` button=1><fn=3></fn></action> <action=`mpc toggle` button=1>%XMMPD%</action> <action=`mpc next` button=1><fn=3></fn></action></action> <fc=#3aa4db>|</fc> %wlp2s0wi% <fc=#3aa4db>|</fc> %battery% <fc=#3aa4db>|</fc> "
       
    }
 
