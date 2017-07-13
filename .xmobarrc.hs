@@ -26,8 +26,8 @@ Config {
                                  commands         = 
         -- network activity monitor
         [ Run DynNetwork       [ "--template"     ,   "<icon=uparrow7.xbm/> <tx>kB/s <icon=downarrow7.xbm/> <rx>kB/s"
-                               , "--Low"          ,   "1000"       -- units: kB/s
-                               , "--High"         ,   "5000"       -- units: kB/s
+                               , "--Low"          ,   "1000"       
+                               , "--High"         ,   "5000"       
                                , "--low"          ,   "#d2d4dc"
                                , "--normal"       ,   "#d2d4dc"
                                , "--high"         ,   "#d2d4dc"
@@ -35,8 +35,8 @@ Config {
 
         -- cpu activity monitor
         , Run MultiCpu         [ "--template"     ,   "<icon=cpu1.xbm/><fc=#d2d4dc> </fc><total0>%"
-                               , "--Low"          ,   "50"         -- units: %
-                               , "--High"         ,   "85"         -- units: %
+                               , "--Low"          ,   "50"         
+                               , "--High"         ,   "85"
                                , "--low"          ,   "#d2d4dc"
                                , "--normal"       ,   "#d2d4dc"
                                , "--high"         ,   "#fd0537"
@@ -44,17 +44,17 @@ Config {
 
         -- cpu core temperature monitor
         , Run CoreTemp         [ "--template"     ,   "<icon=temp1.xbm/><fc=#d2d4dc> </fc><core0>°C"
-                               , "--Low"          ,   "2"         -- units: °C
-                               , "--High"         ,   "80"        -- units: °C
-                               , "--low"          ,   "#d2d4dc"
+                               , "--Low"          ,   "2"         
+                               , "--High"         ,   "80"        
+			       , "--low"          ,   "#d2d4dc"
                                , "--normal"       ,   "#d2d4dc"
                                , "--high"         ,   "fd0537"
                                ] 50
                           
         -- memory usage monitor
         , Run Memory           [ "--template"     ,   "<icon=mem1.xbm/><fc=#d2d4dc> </fc><usedratio>%"
-                               , "--Low"          ,   "20"        -- units: %
-                               , "--High"         ,   "90"        -- units: %
+                               , "--Low"          ,   "20"        
+                               , "--High"         ,   "90"        
                                , "--low"          ,   "#d2d4dc"
                                , "--normal"       ,   "#d2d4dc"
                                , "--high"         ,   "#fd0537"
