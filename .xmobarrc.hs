@@ -62,25 +62,25 @@ Config {
       -- battery monitor
       , Run BatteryP         ["BAT0"]
                              [ "-t"             ,   "<acstatus> <left>%"
-		 	     , "-L"             ,   "10"
-		 	     , "-H"             ,   "60"
-		 	     , "-l"             ,   "#ff0000"
-		             , "-h"             ,   "#c0c0c0"
-		 	     , "--"
-		             , "-O"             ,   "<icon=ac10.xbm/>"
-			     , "-H"             ,   "-20"
-			     , "-i"             ,   "<icon=ac10.xbm/>"
-		 	     , "-o"             ,   "<icon=batt10.xbm/>" 
-		 	     ] 10
+		 	                     , "-L"             ,   "10"
+		 	                     , "-H"             ,   "60"
+		 	                     , "-l"             ,   "#ff0000"
+		                        , "-h"             ,   "#c0c0c0"
+		 	                     , "--"
+		                        , "-O"             ,   "<icon=ac10.xbm/>"
+			                     , "-H"             ,   "-20"
+			                     , "-i"             ,   "<icon=ac10.xbm/>"
+		 	                     , "-o"             ,   "<icon=batt10.xbm/>" 
+		 	                     ] 10
         
 
       -- wireless monitor
       , Run Wireless           "wlp2s0" 
-		             [ "-a"             ,   "l"
-	           	     , "-w"             ,   "4"
-			     , "-t"             ,   "<icon=wifi_01.xbm/><quality>%"
+		                        [ "-a"             ,   "l"
+	           	             , "-w"             ,   "4"
+			                     , "-t"             ,   "<icon=wifi_01.xbm/><quality>%"
                              , "-h"             ,   "#c0c0c0"
-			     ] 10
+			                     ] 10
         
       -- log monitor
       , Run XMonadLog
