@@ -76,11 +76,11 @@ Config {
 
       -- wireless monitor
       , Run Wireless           "wlp2s0" 
-		                        [ "-a"             ,   "l"
-	           	             , "-w"             ,   "4"
-			                     , "-t"             ,   "<icon=wifi_01.xbm/><quality>%"
+		             [ "-a"             ,   "l"
+	           	     , "-w"             ,   "4"
+			     , "-t"             ,   "<icon=wifi_01.xbm/><quality>%"
                              , "-h"             ,   "#c0c0c0"
-			                     ] 10
+			     ] 10
         
       -- log monitor
       , Run XMonadLog
