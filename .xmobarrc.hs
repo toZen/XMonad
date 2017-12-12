@@ -62,16 +62,16 @@ Config {
       -- battery monitor
       , Run BatteryP         ["BAT0"]
                              [ "-t"             ,   "<acstatus> <left>%"
-		 	                     , "-L"             ,   "10"
-		 	                     , "-H"             ,   "60"
-		 	                     , "-l"             ,   "#ff0000"
-		                        , "-h"             ,   "#c0c0c0"
-		 	                     , "--"
-		                        , "-O"             ,   "<icon=ac10.xbm/>"
-			                     , "-H"             ,   "-20"
-			                     , "-i"             ,   "<icon=ac10.xbm/>"
-		 	                     , "-o"             ,   "<icon=batt10.xbm/>" 
-		 	                     ] 10
+		 	     , "-L"             ,   "10"
+		 	     , "-H"             ,   "60"
+		 	     , "-l"             ,   "#ff0000"
+		             , "-h"             ,   "#c0c0c0"
+		 	     , "--"
+		             , "-O"             ,   "<icon=ac10.xbm/>"
+			     , "-H"             ,   "-20"
+			     , "-i"             ,   "<icon=ac10.xbm/>"
+		 	     , "-o"             ,   "<icon=batt10.xbm/>" 
+		 	     ] 10
         
 
       -- wireless monitor
